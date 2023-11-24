@@ -6,8 +6,11 @@ from PIL import Image,ImageTk
 window = tk.Tk()
 window.title('クイズ')
 window.geometry('1280x720')
-
-lavel = tk.Label(window,image="")
+image = Image.open("pika1.png")
+    
+image2 = image.resize((200,200))
+image3=ImageTk.PhotoImage(image2)
+lavel = tk.Label(window,image=image3)
 lavel.pack()
 
 # root = tk.Tk()
@@ -50,24 +53,25 @@ current_question=0
 # random.shuffle(questions)
 
 # 問題を表示する関数
-def show_question():
-    global current_question,lavel
-    print("test")
-    question = questions[current_question]
-    image_path = question['image']
-    image = Image.open(image_path)
+def show_question(lavel):
+    global current_question
+    # print("test")
+    # question = questions[current_question]
+    # image_path = question['image']
+    image = Image.open("pikat2.png")
     
-    image = image.resize((200,200))
-    lavel["image"] = ImageTk.PhotoImage(image)
-    answer = question["answer"]
+    image2 = image.resize((200,200))
+    image3=ImageTk.PhotoImage(image2)
+    lavel["image"] = image3
+    # answer = question["answer"]
     # image_label = tk.Label()
     # window = tk.Tk()
     # window.geometry('1280x720')
    
     
-    image_label = tk.Label(window)
+    # image_label = tk.Label(window)
   
-    answer_entry = tk.Entry(window)
+    # answer_entry = tk.Entry(window)
    
 
 
@@ -77,7 +81,7 @@ def show_question():
     # image_label.image = tk.PhotoImage(file=image_path)
 
 # 答えのテキストボックスを表示
-    answer_entry.delete(0,tk.END)
+    # answer_entry.delete(0,tk.END)
 
 
 # 答えチェック
@@ -136,5 +140,6 @@ def next_question():
         show_question()
 
         # ウインドウを表示
-show_question()
+# show_question(lavel)
+
 window.mainloop()
